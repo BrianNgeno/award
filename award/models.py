@@ -37,8 +37,9 @@ class Profile(models.Model):
 
 class Project(models.Model):
     screenshot = models.ImageField(upload_to = 'images/')
-    project_name = models.CharField(max_length =30)
-    project_url = models.TextField(max_length =40)
+    project_name = models.CharField(max_length =10)
+    project_url = models.CharField(max_length =10)
+    location = models.CharField(max_length =10)
     profile = models.ForeignKey(Profile, null = True,related_name='project')
     pub_date = models.DateTimeField(auto_now_add=True, null=True)
     user= models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)

@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 def home_page(request):
     return render(request,'home.html')
 
-@login_required(login_url='/accounts/login')
+# @login_required(login_url='/accounts/login')
 def upload_project(request):
     if request.method == 'POST':
         uploadform = ProjectForm(request.POST, request.FILES)

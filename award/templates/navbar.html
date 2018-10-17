@@ -73,7 +73,7 @@
 
             </div>
             <div class="col-md-4" id="logo">
-                <img src="../static/images/logo.svg" height="80px" width="160px">
+                <a href="{% url 'home_page' %}"><strong>awwwards.</strong></a>
             </div>
             <div class="col-md-2">
                 {% if user.is_authenticated %}
@@ -97,7 +97,7 @@
                 </ul>
                 {% else %}
                 <li style="list-style: none;">
-                    <a href="/accounts/register/" style="color:black; font-size: 13px;">REGISTER</a>
+                    <a href="/accounts/register/" style="color:black; font-size: 13px;">REGISTER /</a>
                     <a class='btn btn-default' href="/accounts/login" style="color:black; font-size: 13px;">LOGIN</a>
                 </li>
 
@@ -105,7 +105,7 @@
 
             </div>
             <div class="col-md-2" style="text-align: center; padding-top: 16px; font-size: 13px; color:white;background-color: #42AB9E;">
-                <a href="{%url 'upload_project'%}">SUBMIT YOUR SITE!</a>
+                <a href="{%url 'upload_project'%}" style="color: white;">SUBMIT YOUR SITE!</a>
             </div>
         </div>
     </div>
