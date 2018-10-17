@@ -34,5 +34,20 @@ class Project(models.Model):
     class Meta:
         ordering = ['-pk']
 
-    def save_image(self):
+    def save_project(self):
         self.save()
+
+class Rate(models.Model):
+    design = models.CharField(max_length=30)
+    usability = models.CharField(max_length=8)
+    content = models.CharField(max_length=8)
+    average = models.CharField(max_length=8)
+    user = models.ForeignKey(User,null = True)
+    project = models.ForeignKey(Project,related_name='comment')
+
+
+    def __str__(self):
+        return self.design
+
+    class Meta:
+        ordering = ['-id']
