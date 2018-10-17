@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
     font-family: "Lato", sans-serif;
     transition: background-color .5s;
 }
@@ -44,32 +45,85 @@ body {
 
 
 </style>
+{% load bootstrap4 %}
 </head>
+
 <body>
 
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-</div>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Home</a>
+        <a href="#">Winners</a>
+        <a href="#">Nominees</a>
+        <a href="#">Collections</a>
+        <a href="#">Nominees</a>
+    </div>
+    <div class="topnav">
+        <div class="row">
+            <div class="col-md-2">
+                <div id="main">
+                    <span style="font-size:13px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+                </div>
+            </div>
 
+            <div class="col-md-2" height="5px;" width="10px;">
+                <form>
+                    <input type="text" name="search" placeholder="Search.." id="input">
+                </form>
 
+            </div>
+            <div class="col-md-4" id="logo">
+                <img src="../static/images/logo.svg" height="80px" width="160px">
+            </div>
+            <div class="col-md-2">
+                {% if user.is_authenticated %}
+                <ul>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button"
+                            aria-expanded="false">Account
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{%url 'home_page'%}">Home</a>
+                            </li>
+                            <li>
+                                <a href="/accounts/password/change">Change Password</a>
+                            </li>
+                            <li>
+                                <a href="/logout">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                {% else %}
+                <li style="list-style: none;">
+                    <a href="/accounts/register/" style="color:black; font-size: 13px;">REGISTER</a>
+                    <a class='btn btn-default' href="/accounts/login" style="color:black; font-size: 13px;">LOGIN</a>
+                </li>
 
-<script>
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-}
+                {% endif %}
 
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-    document.body.style.backgroundColor = "white";
-}
-</script>
-     
+            </div>
+            <div class="col-md-2" style="text-align: center; padding-top: 16px; font-size: 13px; color:white;background-color: #42AB9E;">
+                <p>SUBMIT YOUR SITE!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.body.style.backgroundColor = "white";
+        }
+    </script>
+
 </body>
-</html> 
+
+</html>
