@@ -41,6 +41,15 @@
 #input[type=text]:focus {
     width: 100%;
 }
-/* #logo{
-    margin-bottom: 10px;
-} */
+#project{
+    background-color: rgba(0, 0, 0, 0.911);
+}
+#formpro{
+    background-color: rgba(16, 106, 148, 0.644);
+    color: white;
+}
+.form-text{
+    type: hidden;
+    display: none;
+    visibility: hidden;
+}

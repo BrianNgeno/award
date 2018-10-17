@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns=[
     url('^$',views.home_page,name = 'home_page'),
+    url(r'^upload/$', views.upload_project, name='upload_project'),
 ]

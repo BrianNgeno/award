@@ -8,8 +8,7 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 def home_page(request):
-    uploadform = ProjectForm()
-    return render(request,'home.html',{'uploadform':uploadform})
+    return render(request,'home.html')
 
 @login_required(login_url='/accounts/login')
 def upload_project(request):
@@ -22,4 +21,4 @@ def upload_project(request):
             return redirect('home_page', username=request.user)
     else:
         uploadform = ProjectForm()
-    return render(request,'home.html',{'uploadform':uploadform})
+    return render(request,'project.html',{'uploadform':uploadform})
