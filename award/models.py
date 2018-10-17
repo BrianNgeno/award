@@ -23,6 +23,18 @@ class Profile(models.Model):
 
     def save_profile(self):
         self.save()
+
+    @classmethod
+    def get_by_id(cls, id):
+        details = Profile.objects.get(user = id)
+        return details
+
+    @classmethod
+    def filter_by_id(cls, id):
+        details = Profile.objects.filter(user = id).first()
+        return details
+    
+
 class Project(models.Model):
     screenshot = models.ImageField(upload_to = 'images/')
     project_name = models.CharField(max_length =30)
