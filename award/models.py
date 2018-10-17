@@ -19,7 +19,7 @@ class Profile(models.Model):
     Profile_photo = models.ImageField(upload_to = 'images/',blank=True)
     Bio = models.TextField(max_length = 50)
     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
-    rating = models.ManyToManyField('Project', related_name='image',max_length=30)
+    rate = models.ManyToManyField('Project', related_name='image',max_length=30)
 
     def save_profile(self):
         self.save()
@@ -27,7 +27,7 @@ class Project(models.Model):
     screenshot = models.ImageField(upload_to = 'images/')
     project_name = models.CharField(max_length =30)
     project_url = models.TextField(max_length =40)
-    profile = models.ForeignKey(Profile, null = True,related_name='image')
+    profile = models.ForeignKey(Profile, null = True,related_name='project')
     pub_date = models.DateTimeField(auto_now_add=True, null=True)
     user= models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     
@@ -43,7 +43,7 @@ class Rate(models.Model):
     content = models.CharField(max_length=8)
     average = models.CharField(max_length=8)
     user = models.ForeignKey(User,null = True)
-    project = models.ForeignKey(Project,related_name='comment')
+    project = models.ForeignKey(Project,related_name='rate')
 
 
     def __str__(self):
