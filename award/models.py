@@ -48,6 +48,17 @@ class Project(models.Model):
 
     def save_project(self):
         self.save()
+    
+    @classmethod
+    def get_project(cls, profile):
+        image = Project.objects.filter(Profile__pk = profile)
+        return image
+    
+    @classmethod
+    def get_all_images(cls):
+        images = Project.objects.all()
+        return images
+
 
 class Rate(models.Model):
     design = models.CharField(max_length=30)
