@@ -1,1 +1,7 @@
-<p>working</p>
+{% extends 'base.html' %}
+{% block content %}
+{{ block.super }}
+<div id="main">
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+</div>
+{% endblock %}
