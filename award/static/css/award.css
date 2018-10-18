@@ -37,10 +37,7 @@
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
-.carousel-inner img {
-      width: 1400px;
-      height: 500px;
-  }
+
 #input[type=text]:focus {
     width: 100%;
 }
@@ -244,4 +241,11 @@ body{
       background-attachment: fixed;
       width:1400px;
       height: 550px;
+  }
+  #data{
+      margin-top: 20px;
+      font-size: 13px;
+  }
+  #data p{
+    font-size: 13px;
   }
