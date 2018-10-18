@@ -65,7 +65,7 @@ $(document).ready(function() {
 var score = "";
 
 $(document).ready(function() {
-  var score1, score2, score3, score4, score5;
+  var score1, score2, score3;
   $('input:radio[name=rate1]').change(function() {
     if (this.value == 'terrible') {
       //alert("you have picked design to be terrible");
@@ -141,8 +141,8 @@ $(document).ready(function() {
   $("#questions").submit(function(event) {
     event.preventDefault();
     var rated = new Rate;
-    // rated.total(score1, score2, score3, score4, score5);
-    console.log(rated.total(score1, score2, score3, score4, score5));
+    // rated.total(score1, score2, score3);
+    console.log(rated.total(score1, score2, score3));
     // Rate.average();
     console.log(rated.average());
     $("#").text(rated.average());
@@ -152,11 +152,12 @@ function Rate() {
   this.totalScore = 0;
   this.averageScore = 0;
 }
-Rate.prototype.total = function(sc1, sc2, sc3, sc4, sc5) {
-  this.totalScore = sc1 + sc2 + sc3 + sc4 + sc5;
+Rate.prototype.total = function(sc1, sc2, sc3) {
+  this.totalScore = sc1 + sc2 + sc3;
   return this.totalScore;
 }
 Rate.prototype.average = function() {
-  this.averageScore = (this.totalScore / 25) * 100;
+  this.averageScore = (this.totalScore / 15) * 100;
   return this.averageScore;
 }
+});

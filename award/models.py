@@ -17,7 +17,7 @@ def save_user_profile(sender, instance, **kwargs):
 
 class Profile(models.Model):
     Profile_photo = models.ImageField(upload_to = 'images/',blank=True)
-    Bio = models.TextField(max_length = 50)
+    Bio = models.TextField(max_length = 50,null = True)
     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
     rate = models.ManyToManyField('Project', related_name='image',max_length=30)
 
@@ -56,13 +56,13 @@ class Project(models.Model):
     
     @classmethod
     def get_project(cls, profile):
-        image = Project.objects.filter(Profile__pk = profile)
-        return image
+        project = Project.objects.filter(Profile__pk = profile)
+        return project
     
     @classmethod
     def get_all_projects(cls):
-        images = Project.objects.all()
-        return images
+        project = Project.objects.all()
+        return project
 
     @classmethod
     def search_by_profile(cls,search_term):
@@ -70,13 +70,13 @@ class Project(models.Model):
         return projo
 
     @classmethod
-    def get_profile_images(cls, profile):
-        images = Image.objects.filter(profile__pk = profile)
-        return images
+    def get_profile_projects(cls, profile):
+        project = Project.objects.filter(profile__pk = profile)
+        return project
 
     @classmethod
     def find_project_id(cls, id):
-        identity = Image.objects.get(pk=id)
+        identity = Project.objects.get(pk=id)
         return identity
 
 class Rate(models.Model):
@@ -93,3 +93,14 @@ class Rate(models.Model):
 
     class Meta:
         ordering = ['-id']
+
+    
+    @classmethod
+    def get_rate(cls, profile):
+        rate = Rate.objects.filter(Profile__pk = profile)
+        return rate
+    
+    @classmethod
+    def get_all_rating(cls):
+        rating = Rate.objects.all()
+        return rating

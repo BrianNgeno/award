@@ -21,7 +21,8 @@ def convert_dates(dates):
 def home_page(request):
     date = dt.date.today()
     project = Project.objects.all()
-    return render(request,'home.html',{'date':date,'project':project})
+    profile = User.objects.get(username=request.user)
+    return render(request,'home.html',locals())
 
 @login_required(login_url='/accounts/login')
 def upload_project(request):
@@ -38,7 +39,7 @@ def upload_project(request):
 
 def view_project(request):
     project = Project.objects.get_all()
-    return render(request,'home.html',{'project':project})
+    return render(request,'home.html', locals())
 
 def search_results(request):
     profile= Profile.objects.all()
@@ -48,7 +49,7 @@ def search_results(request):
         searched_project = Project.search_by_profile(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"project": searched_project,'profile':profile,'project':project})
+        return render(request, 'search.html',locals())
 
     else:
         message = "You haven't searched for any term"
@@ -62,7 +63,7 @@ def profile(request, username):
         profile_details = Profile.get_by_id(profile.id)
     except:
         profile_details = Profile.filter_by_id(profile.id)
-    projo = Project.get_profile_images(profile.id)
+    projo = Project.get_profile_projects(profile.id)
     title = f'@{profile.username} Instagram photos and videos'
 
     return render(request, 'profile.html', locals())
@@ -84,3 +85,7 @@ def edit(request):
     else:
         form = ProfileForm()
     return render(request, 'edit_profile.html', locals())
+
+def rate(request):
+    profile = User.objects.get(username=request.user)
+    return render(request,'rate.html',locals())

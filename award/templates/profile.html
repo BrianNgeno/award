@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% block content %}
+{{block.super}}
+
+<header>
+
+    <div class="container">
+
+        <div class="profile">
+
+            <div class="profile-image">
+                {% if profile.profile.Profile_photo %}
+                <img src="{{profile.profile.Profile_photo.url}}" width="120px" height="120px " alt="" class="img-responsive">
+                {% endif %}
+            </div>
+
+            <div class="profile-user-settings">
+
+                <h1 class="profile-user-name"style="font-size: 25px;">{{profile.username}}</h1>
+            </div>
+            <div class="profile-bio">
+
+                <p style="font-size: 20px;" ><span class="profile-real-name"><strong>{{user.username}}</strong></span> <br> Bio: {{user.profile.Bio}}</p>
+
+            </div>
+
+        </div>
+    </div>
+    {% endblock %}

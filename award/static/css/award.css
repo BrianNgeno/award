@@ -250,7 +250,15 @@ body{
   }
   #pro{
     margin-top: 20px;
-
+  }
+  #proc img{
+    border-radius: 50%;
+  }
+  .topnav img{
+    border-radius: 50%;
+  }
+  .profile img{
+    border-radius: 50%; 
   }
   .hovereffect {
     width: 100%;
