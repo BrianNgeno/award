@@ -60,3 +60,103 @@ $(document).ready(function() {
     timer = setInterval("stoppie(" + a + ", " + pie + ")", 0)
   })
 });
+
+
+var score = "";
+
+$(document).ready(function() {
+  var score1, score2, score3, score4, score5;
+  $('input:radio[name=rate1]').change(function() {
+    if (this.value == 'terrible') {
+      //alert("you have picked design to be terrible");
+      score1 = 1;
+      console.log(score1);
+    } else if (this.value == 'poor') {
+      //alert("you have picked design to be poor");
+      score1 = 2;
+      console.log(score1);
+    } else if (this.value == 'average') {
+      //alert("you have picked designto be average");
+      score1 = 3;
+      console.log(score1);
+    } else if (this.value == 'very good') {
+      //alert("you have picked design to be very good");
+      score1 = 4;
+      console.log(score1)
+    } else if (this.value == 'excellent') {
+      //alert("you have picked design to be excellent");
+      score1 = 5;
+      console.log(score1)
+    }
+  });
+
+  $('input:radio[name=rate2]').change(function() {
+    if (this.value == 'terrible') {
+      //alert("you have picked usability to be terrible");
+      score2 = 1;
+      console.log(score2)
+    } else if (this.value == 'poor') {
+      //alert("you have picked usability to be poor");
+      score2 = 2;
+      console.log(score2)
+    } else if (this.value == 'average') {
+      //alert("you have picked usability to be average");
+      score2 = 3;
+      console.log(score2)
+    } else if (this.value == 'very good') {
+      //alert("you have picked usability to be very good");
+      score2 = 4;
+      console.log(score2)
+    } else if (this.value == 'excellent') {
+      //alert("you have picked usability to be excellent");
+      score2 = 5;
+      console.log(score2)
+    }
+  });
+
+  $('input:radio[name=rate3]').change(function() {
+    if (this.value == 'terrible') {
+      //alert("you have picked creativity to be terrible");
+      score3 = 1;
+      console.log(score3)
+    } else if (this.value == 'poor') {
+      //alert("you have picked creativity to be poor");
+      score3 = 2;
+      console.log(score3)
+    } else if (this.value == 'average') {
+      //alert("you have picked creativity to be average");
+      score3 = 3;
+      console.log(score3)
+    } else if (this.value == 'very good') {
+      //alert("you have picked creativity to be very good");
+      score3 = 4;
+      console.log(score3)
+    } else if (this.value == 'excellent') {
+      //alert("you have picked creativity to be excellent");
+      score3 = 5;
+      console.log(score3)
+    }
+  });
+
+  $("#questions").submit(function(event) {
+    event.preventDefault();
+    var rated = new Rate;
+    // rated.total(score1, score2, score3, score4, score5);
+    console.log(rated.total(score1, score2, score3, score4, score5));
+    // Rate.average();
+    console.log(rated.average());
+    $("#").text(rated.average());
+  });
+  //business logic
+function Rate() {
+  this.totalScore = 0;
+  this.averageScore = 0;
+}
+Rate.prototype.total = function(sc1, sc2, sc3, sc4, sc5) {
+  this.totalScore = sc1 + sc2 + sc3 + sc4 + sc5;
+  return this.totalScore;
+}
+Rate.prototype.average = function() {
+  this.averageScore = (this.totalScore / 25) * 100;
+  return this.averageScore;
+}
