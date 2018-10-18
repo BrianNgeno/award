@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Project,Profile
-from .forms import ProjectForm,ProfileForm
+from .forms import ProjectForm,ProfileForm,RateForm
 from django.contrib.auth.models import User
 import datetime as dt
 
@@ -66,7 +66,7 @@ def profile(request, username):
     projo = Project.get_profile_projects(profile.id)
     title = f'@{profile.username} Instagram photos and videos'
 
-    return render(request, 'profile.html', locals())
+    return render(request, 'update-profile.html', locals())
     '''
     editing user profile fillform & submission
  
@@ -88,4 +88,16 @@ def edit(request):
 
 def rate(request):
     profile = User.objects.get(username=request.user)
+    return render(request,'rate.html',locals())
+
+@login_required(login_url='/accounts/login')
+def rate_project(request,project_id):
+    if request.method == 'POST':
+        rateform = RateForm(request.POST, request.FILES)
+        if rateform.is_valid():
+            rating = rateform.save(commit=False)
+            rating.save()
+            return redirect('project.html')
+    else:
+        rateform = RateForm()
     return render(request,'rate.html',locals())

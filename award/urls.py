@@ -8,7 +8,7 @@ urlpatterns=[
     url(r'^upload/$', views.upload_project, name='upload_project'),
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^edit$', views.edit, name='edit_profile'),
-    url(r'^rate$',views.rate, name='rate'),
+    url(r'^rate/(?P<project_id>\d+)',views.rate, name='rate'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
