@@ -55,7 +55,6 @@ def search_results(request):
         return render(request,'search.html',{"message":message})
 @login_required(login_url='/accounts/login/')
 def profile(request, username):
-    uploadform= ProfileForm
     projo = Project.objects.all()
     profile = User.objects.get(username=username)
     # print(profile.id)
@@ -66,21 +65,21 @@ def profile(request, username):
     projo = Project.get_profile_images(profile.id)
     title = f'@{profile.username} Instagram photos and videos'
 
-    return render(request, 'main_pages/profile.html', locals())
+    return render(request, 'profile.html', locals())
     '''
     editing user profile fillform & submission
     '''
-# @login_required(login_url='/accounts/login/')
-# def edit(request):
-#     profile = User.objects.get(username=request.user)
+@login_required(login_url='/accounts/login/')
+def edit(request):
+    profile = User.objects.get(username=request.user)
 
-#     if request.method == 'POST':
-#         form = ProfileForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             edit = form.save(commit=False)
-#             edit.user = request.user
-#             edit.save()
-#             return redirect('edit_profile')
-#     else:
-#         form = ProfileForm()
-#     return render(request, 'main_pages/edit_profile.html', {'form':form,'profile':profile})
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            edit = form.save(commit=False)
+            edit.user = request.user
+            edit.save()
+            return redirect('edit_profile')
+    else:
+        form = ProfileForm()
+    return render(request, 'edit_profile.html', locals())
