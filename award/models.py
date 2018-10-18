@@ -60,6 +60,10 @@ class Project(models.Model):
         images = Project.objects.all()
         return images
 
+    @classmethod
+    def search_by_profile(cls,search_term):
+        projo = cls.objects.filter(profile__name__icontains=search_term)
+        return projo
 
 class Rate(models.Model):
     design = models.CharField(max_length=30)
