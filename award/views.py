@@ -68,6 +68,7 @@ def profile(request, username):
     return render(request, 'profile.html', locals())
     '''
     editing user profile fillform & submission
+ 
     '''
 @login_required(login_url='/accounts/login/')
 def edit(request):
