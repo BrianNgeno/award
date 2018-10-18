@@ -34,6 +34,10 @@ class Profile(models.Model):
         details = Profile.objects.filter(user = id).first()
         return details
     
+    @classmethod
+    def search_user(cls, name):
+        userprof = Profile.objects.filter(user__username__icontains = name)
+        return userprof
 
 class Project(models.Model):
     screenshot = models.ImageField(upload_to = 'images/')
@@ -56,7 +60,7 @@ class Project(models.Model):
         return image
     
     @classmethod
-    def get_all_images(cls):
+    def get_all_projects(cls):
         images = Project.objects.all()
         return images
 
@@ -64,6 +68,16 @@ class Project(models.Model):
     def search_by_profile(cls,search_term):
         projo = cls.objects.filter(profile__name__icontains=search_term)
         return projo
+
+    @classmethod
+    def get_profile_images(cls, profile):
+        images = Image.objects.filter(profile__pk = profile)
+        return images
+
+    @classmethod
+    def find_project_id(cls, id):
+        identity = Image.objects.get(pk=id)
+        return identity
 
 class Rate(models.Model):
     design = models.CharField(max_length=30)
