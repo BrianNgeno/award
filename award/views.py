@@ -64,9 +64,9 @@ def profile(request, username):
     except:
         profile_details = Profile.filter_by_id(profile.id)
     projo = Project.get_profile_projects(profile.id)
-    title = f'@{profile.username} Instagram photos and videos'
+    title = f'@{profile.username} awwward projects and screenshots'
 
-    return render(request, 'update-profile.html', locals())
+    return render(request, 'profile.html', locals())
     '''
     editing user profile fillform & submission
  
@@ -92,6 +92,8 @@ def rate(request):
 
 @login_required(login_url='/accounts/login')
 def rate_project(request,project_id):
+    project = Project.objects.get(pk=project_id)
+    profile = User.objects.get(username=request.user)
     if request.method == 'POST':
         rateform = RateForm(request.POST, request.FILES)
         if rateform.is_valid():
