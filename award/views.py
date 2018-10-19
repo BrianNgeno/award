@@ -18,7 +18,7 @@ def convert_dates(dates):
     return day
 
 # Create your views here.
-def home_page(request):
+def home_page(request,username):
     date = dt.date.today()
     project = Project.objects.all()
     profile = User.objects.get(username=username)
