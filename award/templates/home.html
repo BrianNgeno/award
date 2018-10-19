@@ -48,13 +48,13 @@
             <div class="hovereffect">
                 <img class="img-responsive" src="{{data.screenshot.url}}" alt="Card image cap" width="100%;" heigth="300px;">
                 <div class="overlay">
-                    <a class="info" href="{% url 'rate' data.pk %}">VOTE NOW</a>
+                    <a class="info" href="{% url 'vote' data.pk %}">VOTE NOW</a>
                 </div>
             </div>
             <div class="card-header">
                 <h5 class="card-title">{{data.project_name}}</h5>
-                <a href="{{data.project_url}}" class="card-text">
-                    <buttton class="btn btn-outline-primary">Visit site</button>
+                <a href="{{data.project_url}}" class="card-text" target="blank">
+                    <buttton class="btn btn-outline-primary" >Visit site</button>
                 </a>
             </div>
             <div class="card-footer">

@@ -4,7 +4,7 @@
 {{block.super}}
 <div class="container-fluid" id="form">
     <div class="col-md-12">
-        <form id="questions">
+        <form id="questions" >
             <div class="row">
                 <div class="col-md-6">
                     Design.
@@ -56,7 +56,7 @@
             </div>
 
             <br>
-            <button class="btn btn-outline-success" type="submit" id="submit">SUBMIT</button>
+            <button class="btn btn-outline-success" type="submit" id="submit" name="reset_form" value="Reset Form" onclick="this.form.reset();">SUBMIT</button>
         </form>
     </div>
 </div>

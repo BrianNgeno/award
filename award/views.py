@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404
 from django.contrib.auth.decorators import login_required
 from .models import Project,Profile
 from .forms import ProjectForm,ProfileForm,RateForm
@@ -110,3 +110,11 @@ def rate_project(request,project_id):
     else:
         rateform = RateForm()
     return render(request,'rate.html',locals())
+
+@login_required(login_url='/accounts/login/')
+def vote(request,project_id):
+   try:
+       project = Project.objects.get(id = project_id)
+   except DoesNotExist:
+       raise Http404()
+   return render(request,"project.html", locals())

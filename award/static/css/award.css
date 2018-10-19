@@ -336,3 +336,6 @@ body{
     -ms-transform: scale(1);
     transform: scale(1);
   }
+  #img-proj{ 
+    margin-top: 20px;
+  }
