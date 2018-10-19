@@ -63,7 +63,7 @@ STATIC_URL = '/static/'
 # Application definition
 
 INSTALLED_APPS = [
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
     'rest_framework',
     'award',
     'bootstrap4',
