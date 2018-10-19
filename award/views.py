@@ -18,11 +18,11 @@ def convert_dates(dates):
     return day
 
 # Create your views here.
-@login_required(login_url='/accounts/login')
+# @login_required(login_url='/accounts/login')
 def home_page(request):
     date = dt.date.today()
     project = Project.objects.all()
-    profile = User.objects.get(username=request.user)
+    # profile = User.objects.get(username=request.user)
     return render(request,'home.html',locals())
 
 @login_required(login_url='/accounts/login')
@@ -86,6 +86,12 @@ def edit(request):
     else:
         form = ProfileForm()
     return render(request, 'edit_profile.html', locals())
+
+    '''
+    logs out current user from account
+    '''
+def logout(request):
+    return render(request, 'home.html')
 
 def rate(request):
     profile = User.objects.get(username=request.user)
