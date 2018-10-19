@@ -36,7 +36,7 @@ def upload_project(request):
             return redirect('home_page')
     else:
         uploadform = ProjectForm()
-    return render(request,'project.html',{'uploadform':uploadform})
+    return render(request,'update-project.html',locals())
 
 def view_project(request):
     project = Project.objects.get_all()
@@ -87,9 +87,9 @@ def edit(request):
         form = ProfileForm()
     return render(request, 'edit_profile.html', locals())
 
-# def rate(request):
-#     profile = User.objects.get(username=request.user)
-#     return render(request,'rate.html',locals())
+def rate(request):
+    profile = User.objects.get(username=request.user)
+    return render(request,'rate.html',locals())
 
 @login_required(login_url='/accounts/login')
 def rate_project(request,project_id):
