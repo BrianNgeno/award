@@ -86,9 +86,9 @@ def edit(request):
         form = ProfileForm()
     return render(request, 'edit_profile.html', locals())
 
-def rate(request):
-    profile = User.objects.get(username=request.user)
-    return render(request,'rate.html',locals())
+# def rate(request):
+#     profile = User.objects.get(username=request.user)
+#     return render(request,'rate.html',locals())
 
 @login_required(login_url='/accounts/login')
 def rate_project(request,project_id):

@@ -34,14 +34,9 @@ STATIC_URL = '/static/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 # development
 if config('MODE')=="dev":
    DATABASES = {
