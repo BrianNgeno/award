@@ -63,6 +63,7 @@ STATIC_URL = '/static/'
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'award',
     'bootstrap4',
     'django.contrib.admin',
