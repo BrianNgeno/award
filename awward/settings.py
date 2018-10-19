@@ -63,6 +63,7 @@ STATIC_URL = '/static/'
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework.authtoken'
     'rest_framework',
     'award',
     'bootstrap4',
@@ -105,6 +106,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'awward.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
 # development
 if config('MODE')=="dev":
    DATABASES = {
