@@ -5,6 +5,9 @@ from .models import Project,Profile
 from .forms import ProjectForm,ProfileForm,RateForm
 from django.contrib.auth.models import User
 import datetime as dt
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import ProfileSerializer
 
 def convert_dates(dates):
     # function that gets the weekday number for the date.
@@ -118,3 +121,9 @@ def vote(request,project_id):
    except DoesNotExist:
        raise Http404()
    return render(request,"project.html", locals())
+
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_profile = Profile.objects.all()
+        serializers = ProfileSerializer(all_profile, many=True)
+        return Response(serializers.data)
