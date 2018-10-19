@@ -21,7 +21,7 @@ def convert_dates(dates):
 def home_page(request):
     date = dt.date.today()
     project = Project.objects.all()
-    profile = User.objects.get(username=request.user)
+    profile = User.objects.get(username=username)
     return render(request,'home.html',locals())
 
 @login_required(login_url='/accounts/login')
