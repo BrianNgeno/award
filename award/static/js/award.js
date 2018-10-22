@@ -71,22 +71,27 @@ $(document).ready(function() {
       //alert("you have picked design to be terrible");
       score1 = 2;
       console.log(score1);
+      $("#design").text(score1);
     } else if (this.value == 'poor') {
       //alert("you have picked design to be poor");
       score1 = 4;
       console.log(score1);
+      $("#design").text(score1);
     } else if (this.value == 'average') {
       //alert("you have picked designto be average");
       score1 = 6;
       console.log(score1);
+      $("#design").text(score1);
     } else if (this.value == 'very good') {
       //alert("you have picked design to be very good");
       score1 = 8;
       console.log(score1)
+      $("#design").text(score1);
     } else if (this.value == 'excellent') {
       //alert("you have picked design to be excellent");
       score1 = 10;
       console.log(score1)
+      $("#design").text(score1);
     }
   });
 
@@ -95,22 +100,27 @@ $(document).ready(function() {
       //alert("you have picked usability to be terrible");
       score2 = 2;
       console.log(score2)
+      $("#usability").text(score2);
     } else if (this.value == 'poor') {
       //alert("you have picked usability to be poor");
       score2 = 4;
       console.log(score2)
+      $("#usability").text(score2);
     } else if (this.value == 'average') {
       //alert("you have picked usability to be average");
       score2 = 6;
       console.log(score2)
+      $("#usability").text(score2);
     } else if (this.value == 'very good') {
       //alert("you have picked usability to be very good");
       score2 = 8;
       console.log(score2)
+      $("#usability").text(score2);
     } else if (this.value == 'excellent') {
       //alert("you have picked usability to be excellent");
       score2 = 10;
       console.log(score2)
+      $("#usability").text(score2);
     }
   });
 
@@ -119,22 +129,27 @@ $(document).ready(function() {
       //alert("you have picked creativity to be terrible");
       score3 = 2;
       console.log(score3)
+      $("#creativity").text(score3);
     } else if (this.value == 'poor') {
       //alert("you have picked creativity to be poor");
       score3 = 4;
       console.log(score3)
+      $("#creativity").text(score3);
     } else if (this.value == 'average') {
       //alert("you have picked creativity to be average");
       score3 = 6;
       console.log(score3)
+      $("#creativity").text(score3);
     } else if (this.value == 'very good') {
       //alert("you have picked creativity to be very good");
       score3 = 8;
       console.log(score3)
+      $("#creativity").text(score3);
     } else if (this.value == 'excellent') {
       //alert("you have picked creativity to be excellent");
       score3 = 10;
       console.log(score3)
+      $("#creativity").text(score3);
     }
   });
 
@@ -145,7 +160,10 @@ $(document).ready(function() {
     console.log(rated.total(score1, score2, score3));
     // Rate.average();
     console.log(rated.average());
-    $("#").text(rated.average());
+    $("#total").text(rated.average());
+    // $("#creativity").text(score3);
+    // $("#usability").text(score2);
+    // $("#design").text(score1);
   });
   //business logic
 function Rate() {

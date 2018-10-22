@@ -1,31 +1,30 @@
 {%extends "registration/base.html"%} {% load bootstrap4 %}
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid" id="reg">
     <div class="row">
         <!-- Empty div -->
         <div class="col-md-6"></div>
         <div class="col-md-6">
             {% if form.errors %}
-            <p> Some Information Might be Incorrect </p>
+            <h6> Some Information Might be Incorrect </h6>
             {% endif %}
             <div class="card" id="user">
 
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-2"></div>
-                        <div class="col-md-8" style="text-align: center; color: dimgray;">
+                        <div class="col-md-8" style="text-align: center; color: dimgray;" style="font-size:14;">
                             WELCOME TO AWWWARDS.
                         </div>
-                        <div class="row">
-                            <div class="col-md-8">
-                                <p><strong>Register With</strong></p>
-                            </div>
-                            <div class="col-md-4">
-                                <p>Are you Member? <a href="/accounts/login/?next=/">sign-in</a></p>
-                            </div>
-                        </div>
+                        <div class="col-md-2"></div>
                     </div>
+                    <div class="row">
+                        <h6 style="text-align:center;"><strong>Register With</strong></h6>
+                        <h6 style="text-align:center;">Are you Member? <a href="/accounts/login/?next=/">sign-in</a></h6>
+                    </div>
+
                 </div>
+
 
 
                 <div class="card-body">
@@ -56,7 +55,5 @@
 
         </div>
     </div>
-    <!-- empty div -->
 </div>
-
 {% endblock %}

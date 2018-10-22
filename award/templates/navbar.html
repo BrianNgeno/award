@@ -62,79 +62,79 @@
             <a href="#">Nominees</a>
             <a href="#">Collections</a>
             <a href="#">Nominees</a>
-    </div>
-    <div class="topnav">
-        <div class="row">
-            <div class="col-md-2">
-                <div id="main">
-                    <span style="font-size:13px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+        </div>
+        <div class="topnav">
+            <div class="row">
+                <div class="col-md-2">
+                    <div id="main">
+                        <span style="font-size:13px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+                    </div>
+                </div>
+
+                <div class="col-md-2" height="5px;" width="10px;">
+                    <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+                        <input type="text" name="search" placeholder="Search.." id="input">
+                    </form>
+
+                </div>
+                <div class="col-md-4" id="logo">
+                    <a href="{% url 'home_page' %}"><strong>awwwards.</strong></a>
+                </div>
+                <div class="col-md-2" id="drop">
+                    {% if user.is_authenticated %}
+                    <ul class="" style="position:absolute;">
+                        <li class="dropdown btn profile-settings-btn" style="list-style:none;" aria-label="profile settings">
+                            <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button"
+                                aria-expanded="false"><i class="fa fa-cog" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{% url 'home_page' %}">Home</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'edit_profile' %}">Edit Profile</a>
+                                </li>
+                                <li>
+                                    <a href="/accounts/password/change">Change Password</a>
+                                </li>
+                                <li>
+                                    <a href="/logout">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    {% else %}
+                    <li style="list-style: none;">
+                        <a href="/accounts/register/" style="color:black; font-size: 13px;">REGISTER /</a>
+                        <a class='btn btn-default' href="/accounts/login" style="color:black; font-size: 13px;">LOGIN</a>
+                    </li>
+
+                    {% endif %}
+                    {% if data.profile.Profile_photo %}
+                    <img src="{{profile.profile.Profile_photo.url}}" alt="img" width="50px" height="50px ">
+                    <h1 class="profile-user-name" style="font-size: 14px;">{{profile.username}}</h1>
+                    {% endif %}
+                </div>
+                <div class="col-md-2" style="text-align: center; padding-top: 16px; font-size: 13px; color:white;background-color: #42AB9E;">
+                    <a href="{%url 'upload_project'%}" style="color: white;">SUBMIT YOUR SITE!</a>
                 </div>
             </div>
-
-            <div class="col-md-2" height="5px;" width="10px;">
-                <form class="navbar-form" role="search" action="{% url 'search_results' %}">
-                    <input type="text" name="search" placeholder="Search.." id="input">
-                </form>
-
-            </div>
-            <div class="col-md-4" id="logo">
-                <a href="{% url 'home_page' %}"><strong>awwwards.</strong></a>
-            </div>
-            <div class="col-md-2" id="drop">
-                {% if user.is_authenticated %}
-                <ul class="" style="position:absolute;">
-                    <li class="dropdown btn profile-settings-btn" style="list-style:none;" aria-label="profile settings">
-                        <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button"
-                            aria-expanded="false"><i class="fa fa-cog" aria-hidden="true"></i>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{% url 'home_page' %}">Home</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'edit_profile' %}">Edit Profile</a>
-                            </li>
-                            <li>
-                                <a href="/accounts/password/change">Change Password</a>
-                            </li>
-                            <li>
-                                <a href="/logout">Logout</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-
-                {% else %}
-                <li style="list-style: none;">
-                    <a href="/accounts/register/" style="color:black; font-size: 13px;">REGISTER /</a>
-                    <a class='btn btn-default' href="/accounts/login" style="color:black; font-size: 13px;">LOGIN</a>
-                </li>
-
-                {% endif %}
-                {% if data.profile.Profile_photo %}
-                <img src="{{profile.profile.Profile_photo.url}}" alt="img" width="50px" height="50px ">
-                <h1 class="profile-user-name" style="font-size: 14px;">{{profile.username}}</h1>
-            {% endif %}
-              </div>
-            <div class="col-md-2" style="text-align: center; padding-top: 16px; font-size: 13px; color:white;background-color: #42AB9E;">
-                <a href="{%url 'upload_project'%}" style="color: white;">SUBMIT YOUR SITE!</a>
-            </div>
         </div>
-    </div>
 
-    <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
-            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-        }
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+            }
 
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
-            document.body.style.backgroundColor = "white";
-        }
-    </script>
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft = "0";
+                document.body.style.backgroundColor = "white";
+            }
+        </script>
     </div>
 </body>
 

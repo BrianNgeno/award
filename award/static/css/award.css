@@ -67,6 +67,7 @@
     margin-left: 20px;
     font-family: 'Comfortaa', cursive;
 }
+
 @import "bourbon";
 
 $color-lightgrey: #eee;
@@ -338,4 +339,9 @@ body{
   }
   #img-proj{ 
     margin-top: 20px;
+  }
+  #reg{
+    background-image: url(../images/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
   }

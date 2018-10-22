@@ -94,7 +94,9 @@ class Rate(models.Model):
     class Meta:
         ordering = ['-id']
 
-    
+    def save_rate(self):
+        self.save()
+
     @classmethod
     def get_rate(cls, profile):
         rate = Rate.objects.filter(Profile__pk = profile)

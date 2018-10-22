@@ -120,6 +120,7 @@ def rate_project(request,project_id):
 def vote(request,project_id):
    try:
        project = Project.objects.get(id = project_id)
+       rateform = RateForm()
    except DoesNotExist:
        raise Http404()
    return render(request,"project.html", locals())
@@ -150,5 +151,5 @@ class ProjectList(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
-    permission_classes = (IsAdminOrReadOnly,
     
+    permission_classes = (IsAdminOrReadOnly,)
