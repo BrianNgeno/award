@@ -108,10 +108,11 @@ def rate_project(request,project_id):
     profile = User.objects.get(username=request.user)
     if request.method == 'POST':
         rateform = RateForm(request.POST, request.FILES)
+        print(rateform.errors)
         if rateform.is_valid():
             rating = rateform.save(commit=False)
             rating.save()
-            return redirect('project.html')
+            return redirect('vote',project_id)
     else:
         rateform = RateForm()
     return render(request,'rate.html',locals())

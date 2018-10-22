@@ -93,6 +93,7 @@ $(document).ready(function() {
       console.log(score1)
       $("#design").text(score1);
     }
+    $("#id_design").val(score1)
   });
 
   $('input:radio[name=rate2]').change(function() {
@@ -122,6 +123,7 @@ $(document).ready(function() {
       console.log(score2)
       $("#usability").text(score2);
     }
+    $("#id_usability").val(score2)
   });
 
   $('input:radio[name=rate3]').change(function() {
@@ -151,6 +153,7 @@ $(document).ready(function() {
       console.log(score3)
       $("#creativity").text(score3);
     }
+    $("#id_creativity").val(score3)
   });
 
   $("#questions").submit(function(event) {
@@ -160,10 +163,8 @@ $(document).ready(function() {
     console.log(rated.total(score1, score2, score3));
     // Rate.average();
     console.log(rated.average());
-    $("#total").text(rated.average());
-    // $("#creativity").text(score3);
-    // $("#usability").text(score2);
-    // $("#design").text(score1);
+    $("#id_average").val(rated.average());
+    $("#ratingform").submit()
   });
   //business logic
 function Rate() {
