@@ -25,15 +25,18 @@
 </div>
 <div class="jumbotron">
     <div class="row">
+
         {% for item in rate %}
-        <p>{{item.user.name}}</p>
-        <div class="col-md-3">
+        <div class="col-md-2">
+            <h6>{{request.user}}</h6>
+        </div>
+        <div class="col-md-2">
             <h6>
                 <stong> Design </stong>
             </h6>
             {{item.design}}
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <h6>
                 <stong> Creativity </stong>
             </h6>
@@ -49,7 +52,7 @@
             <h6>
                 <stong> Average </stong>
             </h6>
-            float{{item.average}}
+            {{item.average}}
         </div>
         {% endfor %}
     </div>
