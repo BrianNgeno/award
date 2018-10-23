@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse,Http404
 from django.contrib.auth.decorators import login_required
-from .models import Project,Profile
+from .models import Project,Profile,Rate
 from .forms import ProjectForm,ProfileForm,RateForm
 from django.contrib.auth.models import User
 import datetime as dt
@@ -102,6 +102,13 @@ def rate(request):
     profile = User.objects.get(username=request.user)
     return render(request,'rate.html',locals())
 
+def view_rate(request,project_id):
+    user = User.objects.get(username=request.user)
+    project = Project.objects.get(pk=project_id)
+    rate = Rate.objects.filter(project_id=project_id)
+    print(rate)
+    return render(request,'project.html',locals())
+
 @login_required(login_url='/accounts/login')
 def rate_project(request,project_id):
     project = Project.objects.get(pk=project_id)
@@ -111,6 +118,8 @@ def rate_project(request,project_id):
         print(rateform.errors)
         if rateform.is_valid():
             rating = rateform.save(commit=False)
+            rating.project = project
+            rating.user = request.user
             rating.save()
             return redirect('vote',project_id)
     else:
@@ -120,7 +129,9 @@ def rate_project(request,project_id):
 @login_required(login_url='/accounts/login/')
 def vote(request,project_id):
    try:
-       project = Project.objects.get(id = project_id)
+       project = Project.objects.get(pk=project_id)
+       rate = Rate.objects.filter(project_id=project_id).all()
+       print([r.project_id for r in rate])
        rateform = RateForm()
    except DoesNotExist:
        raise Http404()
